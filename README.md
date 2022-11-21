@@ -1,6 +1,11 @@
 ## Exam in PG6301 Webutvikling og API-design
 ### Kandidatnr: 1009
 
+## Important - Azure and Repo
+This app could not be published to Azure since my account has been disabled.
+The account was disabled because of insufficient credits(has been used up by other courses at Kristiania). Proof:
+![image](https://user-images.githubusercontent.com/24465003/203160263-984c532d-59b4-4276-ab56-f67ec4cd3234.png)
+
 ### Task at hand
 You are to make a website and support server for a catering business. The idea is that the
 business organises and prepares food for events.
