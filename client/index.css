@@ -1,0 +1,244 @@
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: .5em;
+    display: flex;
+    align-items: center;
+    background: orange;
+}
+
+footer {
+    background: orange;
+    padding: .5em;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    margin: 0;
+}
+
+a {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+header nav {
+    margin-left: auto;
+}
+
+header nav ul{
+    display: flex;
+    list-style: none;
+    gap: 1em;
+}
+
+main {
+    flex: 1;
+    max-width: 1300px;
+    width: 100%;
+    margin-inline: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.page {
+    padding: 1em;
+    width: 100%;
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    padding: .5em;
+}
+
+.form-control {
+    border: 1px solid #cfcfcf;
+    border-radius: 5px;
+    padding: .5em;
+}
+
+/* Dishes Page*/
+.dishes-page {
+
+}
+
+
+/* Customer Login Page*/
+.customer-login {
+
+}
+
+.customer-login .divider {
+    display: flex;
+    gap: 2em;
+}
+
+.customer-login .divider section {
+    padding: .5em;
+}
+
+/* Dish Management */
+.dish-management .dishes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 250px));
+    padding: 1em;
+    gap: 1em;
+}
+
+.dish-management .header {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.dish-management .dishes .dish {
+    border: 1px solid #cfcfcf;
+    padding: 1em;
+    text-align: center;
+    cursor: pointer;
+    border-radius: .5em;
+    position: relative;
+    padding-left: 10px;
+}
+
+
+.dish-management .dishes .dish .delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 7px;
+    font-size: 1.1em;
+}
+
+.dish-management .dishes .dish .delete-icon:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.dish-management .dishes .dish:hover {
+    background: cornflowerblue;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Orders Page*/
+.orders-page {
+
+}
+
+.orders-page .header {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.orders-page .orders {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.orders-page .order {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    border: 1px solid #cecece;
+    padding: .75em;
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+.orders-page .order:hover {
+    background: cornflowerblue;
+    color: #fff;
+}
+
+/*OrderDetails Page*/
+.order-details-page {
+
+}
+
+.order-details-page .details {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.dish-details .dishes {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.dish-details .dishes .dish {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    border: 1px solid #cfcfcf;
+    padding: 1em;
+    border-radius: .5em;
+}
+
+.order-details-page .header {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.add-dish-dialog {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.add-dish-dialog .dishes {
+    width: 100%;
+    height: 340px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.add-dish-dialog .dishes .dish {
+    padding: 1em;
+    border: 1px solid #cfcfcf;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    border-radius: .5em;
+    cursor: pointer;
+
+}
+
+.add-dish-dialog .dishes .dish.selected {
+    background: cornflowerblue;
+    color: #fff;
+}
+
+/* New Order Dialog*/
+.create-new-order-dialog {
+    padding: 1em;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}

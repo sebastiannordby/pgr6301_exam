@@ -1,0 +1,33 @@
+{
+  "name": "pg6301_exam",
+  "version": "1.0.0",
+  "description": "Exam in WEB and API",
+  "main": "index.js",
+  "author": "candidate 1009",
+  "scripts": {
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "dev": "concurrently 'npm:dev:client' 'npm:dev:server'",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "start": "cd server && npm run start",
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kristiania-EDU/pg6301_sockets.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kristiania-EDU/pg6301_sockets/issues"
+  },
+  "homepage": "https://github.com/Kristiania-EDU/pg6301_sockets#readme",
+  "dependencies": {
+    "concurrently": "^7.5.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}
