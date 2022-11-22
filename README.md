@@ -14,11 +14,15 @@ I also had to move my repository, because the Github classroom was not configure
 This unfortunately led to alot of frustration and i ended up settling with a lower grade.
 
 #### Predefined Admin Logins
+
 Username: admin | Password: admin
+
 Username: indish | Password: pass
 
 #### Predefined Customer Logins
+
 Username: gluten | Password: glut1
+
 Username: sensor | Password: pass
 
 
