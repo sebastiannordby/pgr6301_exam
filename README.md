@@ -1,3 +1,5 @@
+[![.github/workflows/azure-webapps-node.yml](https://github.com/sebastiannordby/pgr6301_exam/actions/workflows/azure-webapps-node.yml/badge.svg)](https://github.com/sebastiannordby/pgr6301_exam/actions/workflows/azure-webapps-node.yml)
+
 ## Exam in PG6301 Webutvikling og API-design
 ### Kandidatnr: 1009
 
