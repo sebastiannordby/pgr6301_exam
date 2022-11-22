@@ -2,26 +2,6 @@ import { Router } from "express";
 import { ObjectID } from "mongodb";
 
 const ORDERS_COLLECTION = "orders";
-const SAMPLE_ORDER = {
-  _id: {
-    $oid: "637bab874d00754a3bbd120e",
-  },
-  deliveryAddressLine: "Skibakkvegen 2",
-  deliveryPostOfficeCode: "1923",
-  deliveryPostOffice: "Sørum",
-  customerId: "637ba7e3f365fbf863d541b8",
-  deliveryTime: "21.11.2022",
-  dishes: [
-    {
-      // Dish
-      quantity: 1,
-    },
-    {
-      // Dish
-      quantity: 1,
-    },
-  ],
-};
 
 export function OrderAPI(mongoDatabase) {
   const router = new Router();
@@ -55,6 +35,11 @@ export function OrderAPI(mongoDatabase) {
       return;
     }
 
+    const order = req.body;
+    const orderId = order._id;
+
+    delete order._id;
+
     mongoDatabase.collection(ORDERS_COLLECTION).updateOne(
       { _id: new ObjectID(orderId) },
       {
@@ -79,6 +64,11 @@ export function OrderAPI(mongoDatabase) {
       .collection(ORDERS_COLLECTION)
       .findOne({ customerId: customerId, _id: new ObjectID(req.params.id) });
 
+    if (!order) {
+      res.sendStatus(404);
+      return;
+    }
+
     res.send(order);
   });
 
@@ -95,7 +85,7 @@ export function OrderAPI(mongoDatabase) {
       customerId,
     };
 
-    mongoDatabase.collection(ORDERS_COLLECTION).insertOne(order);
+    await mongoDatabase.collection(ORDERS_COLLECTION).insertOne(order);
 
     res.sendStatus(200);
   });

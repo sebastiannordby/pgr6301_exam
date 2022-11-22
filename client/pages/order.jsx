@@ -10,8 +10,9 @@ import {
 } from "@mui/material";
 import { DISHES_API } from "../api/dishes_api.js";
 import { NewOrderDialog } from "../components/order/new-order-dialog.jsx";
+import { NoAccessComponent } from "../no-access-component";
 
-export function OrderPage() {
+export function OrderPage({ customer }) {
   const [orders, setOrders] = useState([]);
   const [newOrderDialogVisible, setNewOrderDialogVisible] = useState(false);
 
@@ -21,38 +22,43 @@ export function OrderPage() {
     })();
   }, []);
 
-  return (
-    <>
-      <div className="page orders-page">
-        <div className="header">
-          <h2>Orders</h2>
-          <Button
-            variant="contained"
-            onClick={() => setNewOrderDialogVisible(true)}
-          >
-            Add
-          </Button>
+  if (customer) {
+    return (
+      <>
+        <div className="page orders-page">
+          <div className="header">
+            <h2>Orders</h2>
+            <Button
+              variant="contained"
+              onClick={() => setNewOrderDialogVisible(true)}
+            >
+              Add
+            </Button>
+          </div>
+
+          <div className="orders">
+            {orders.map((x) => (
+              <a href={`/order/${x._id}`} key={x._id} className="order">
+                <span>Address: {x.deliveryAddressLine}</span>
+                <span>
+                  Postoffice: {x.deliveryPostOfficeCode} -{" "}
+                  {x.deliveryPostOffice}
+                </span>
+                <span>Delivery: {x.deliveryTime}</span>
+              </a>
+            ))}
+          </div>
         </div>
 
-        <div className="orders">
-          {orders.map((x) => (
-            <a href={`/order/${x._id}`} key={x._id} className="order">
-              <span>Address: {x.deliveryAddressLine}</span>
-              <span>
-                Postoffice: {x.deliveryPostOfficeCode} - {x.deliveryPostOffice}
-              </span>
-              <span>Delivery: {x.deliveryTime}</span>
-            </a>
-          ))}
-        </div>
-      </div>
+        <NewOrderDialog
+          open={newOrderDialogVisible}
+          setOpen={setNewOrderDialogVisible}
+        />
+      </>
+    );
+  }
 
-      <NewOrderDialog
-        open={newOrderDialogVisible}
-        setOpen={setNewOrderDialogVisible}
-      />
-    </>
-  );
+  return <NoAccessComponent />;
 }
 
 export function OrderDetailsPage() {

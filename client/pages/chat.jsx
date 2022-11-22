@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, TextField } from "@mui/material";
 import { CHAT_API } from "../api/chat_api.js";
+import { NoAccessComponent } from "../no-access-component.js";
 
 export function SupportChat({ customer }) {
   const [webSocket, setWebSocket] = useState();
@@ -41,7 +42,7 @@ export function SupportChat({ customer }) {
 
   useEffect(() => {
     (async () => {
-      const chat = await CHAT_API.list();
+      const chat = await CHAT_API.getCustomerChat();
       const messages = chat ? chat.messages : [];
 
       setChatlog(messages);
@@ -61,6 +62,7 @@ export function SupportChat({ customer }) {
             <TextField
               sx={{ width: "100%" }}
               value={newMessage}
+              placeholder="Send a message.."
               onChange={(e) => setNewMessage(e.target.value)}
             />
             <Button type="submit" variant="contained">
@@ -72,7 +74,7 @@ export function SupportChat({ customer }) {
     );
   }
 
-  return <></>;
+  return <NoAccessComponent />;
 }
 
 function ChatElement({ chat: { authorName, message } }) {

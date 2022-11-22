@@ -12,12 +12,29 @@ import { OrderDetailsPage, OrderPage } from "./pages/order.jsx";
 import { CUSTOMER_API } from "./api/customer_api.js";
 import React from "react";
 import { SupportChat } from "./pages/chat.jsx";
+import { ADMIN_API } from "./api/admin_api.js";
+import { AdminChat } from "./pages/admin-chat";
 
 const element = document.getElementById("root");
 const root = createRoot(element);
 
 function Application() {
   const [customer, setCustomer] = useState();
+  const [admin, setAdmin] = useState();
+  const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
+
+  const setAdminCallback = (result) => {
+    setAdmin(result.admin);
+    setCookie("admin", result.cookie);
+  };
+
+  useEffect(() => {
+    (async () => {
+      if (cookies["admin"]) {
+        setAdmin(await ADMIN_API.getSignedOnAdmin());
+      }
+    })();
+  }, [cookies]);
 
   return (
     <BrowserRouter>
@@ -26,7 +43,14 @@ function Application() {
         <Routes>
           <Route path="/" element={<DishesPage customer={customer} />}></Route>
           <Route path="/admin" element={<AdminPage />}></Route>
-          <Route path="/order" element={<OrderPage />}></Route>
+          <Route
+            path="/admin-chat"
+            element={<AdminChat admin={admin} />}
+          ></Route>
+          <Route
+            path="/order"
+            element={<OrderPage customer={customer} />}
+          ></Route>
           <Route
             path="/support"
             element={<SupportChat customer={customer} />}
@@ -34,7 +58,7 @@ function Application() {
           <Route path="/order/:orderId" element={<OrderDetailsPage />}></Route>
         </Routes>
       </main>
-      <Footer />
+      <Footer setAdmin={setAdminCallback} />
     </BrowserRouter>
   );
 }
@@ -58,6 +82,7 @@ function Header({ onCustomerLoggedIn }) {
   const signoutCustomer = () => {
     removeCookie("customer");
     setCustomer(null);
+    document.location.reload();
   };
 
   useEffect(() => {
@@ -122,12 +147,13 @@ function Header({ onCustomerLoggedIn }) {
   );
 }
 
-function Footer() {
+function Footer({ setAdmin }) {
   const [adminLoginDialogVisible, setAdminDialogVisible] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
 
   const signOutAdmin = () => {
     removeCookie("admin");
+    document.location.reload();
   };
 
   if (!cookies["customer"]) {
@@ -142,11 +168,15 @@ function Footer() {
               <Link to="/admin">Management</Link>
             </li>
             <li>
+              <Link to="/admin-chat">Support</Link>
+            </li>
+            <li>
               <a onClick={signOutAdmin}>Signout(Admin)</a>
             </li>
           </ul>
         </footer>
         <AdminLoginDialog
+          setAdmin={setAdmin}
           open={adminLoginDialogVisible}
           setOpen={setAdminDialogVisible}
         />

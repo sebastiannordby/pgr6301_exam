@@ -8,7 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 
-export function AdminLoginForm({ setAdminCookie, onLogin }) {
+export function AdminLoginForm({ setAdmin, onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,7 +18,7 @@ export function AdminLoginForm({ setAdminCookie, onLogin }) {
     const result = await ADMIN_API.login(username, password);
 
     if (result) {
-      setAdminCookie(result.cookie);
+      setAdmin(result);
       onLogin();
     }
   };
@@ -50,15 +50,12 @@ export function AdminLoginForm({ setAdminCookie, onLogin }) {
   );
 }
 
-export function AdminLoginDialog({ open, setOpen, setAdminCookie }) {
+export function AdminLoginDialog({ open, setOpen, setAdmin }) {
   return (
     <Dialog open={open} onClose={() => setOpen(false)}>
       <DialogTitle>Login Admin</DialogTitle>
       <DialogContent>
-        <AdminLoginForm
-          setAdminCookie={setAdminCookie}
-          onLogin={() => setOpen(false)}
-        />
+        <AdminLoginForm setAdmin={setAdmin} onLogin={() => setOpen(false)} />
       </DialogContent>
     </Dialog>
   );

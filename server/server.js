@@ -10,6 +10,8 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import { OrderAPI } from "./apis/order_api.js";
 import { ChatAPI } from "./apis/chat_api.js";
+import { handleAdminSocket } from "./sockets/admin-socket-handler.js";
+import { handleCustomerSocket } from "./sockets/customer-socket.handler.js";
 
 dotenv.config();
 
@@ -38,42 +40,12 @@ WEB_SOCKET_SERVER.on("connect", (socket) => {
   socket.on("message", async (data) => {
     const packet = JSON.parse(data);
 
-    if (packet) {
-      let chat = await MONGO_DATABASE.collection("chats").findOne({
-        customerId: packet.customerId,
-      });
+    console.log("socket.onMessage: ", packet);
 
-      if (!chat) {
-        chat = {
-          customerId: packet.customerId,
-          messages: [],
-        };
-      }
-
-      if (!packet.admin) {
-        chat.messages.push({
-          authorId: packet.customerId,
-          authorName: packet.customerName,
-          isAdmin: false,
-          message: packet.message,
-        });
-      } else {
-        chat.messages.push({
-          authorId: packet.adminId,
-          authorName: packet.adminName,
-          isAdmin: true,
-          message: packet.message,
-        });
-      }
-
-      await MONGO_DATABASE.collection("chats").updateOne(
-        { _id: new ObjectID(chat._id) },
-        {
-          $set: {
-            ...chat,
-          },
-        }
-      );
+    if (packet.isAdmin) {
+      await handleAdminSocket(packet, MONGO_DATABASE);
+    } else {
+      await handleCustomerSocket(packet, MONGO_DATABASE);
     }
   });
 });

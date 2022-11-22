@@ -3,6 +3,21 @@ body {
     margin: 0;
 }
 
+h2 {
+    margin: 0 0 .5em;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin-bottom: .5em;
+}
+
+.header h2 {
+    margin: 0;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -103,12 +118,6 @@ main {
     gap: 1em;
 }
 
-.dish-management .header {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-}
-
 .dish-management .dishes .dish {
     border: 1px solid #cfcfcf;
     padding: 1em;
@@ -141,12 +150,6 @@ main {
 /* Orders Page*/
 .orders-page {
 
-}
-
-.orders-page .header {
-    display: flex;
-    align-items: center;
-    gap: 1em;
 }
 
 .orders-page .orders {
@@ -194,12 +197,6 @@ main {
     border: 1px solid #cfcfcf;
     padding: 1em;
     border-radius: .5em;
-}
-
-.order-details-page .header {
-    display: flex;
-    align-items: center;
-    gap: 1em;
 }
 
 .add-dish-dialog {
@@ -258,4 +255,33 @@ main {
 .support-chat form {
     display: flex;
     gap: .5em;
+}
+
+/*Admin chat*/
+.admin-chat {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.admin-chat form {
+    display: flex;
+    gap: .5em;
+}
+
+.admin-chat .messages {
+    flex: 1;
+}
+
+.admin-chat .chat-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.admin-chat .chat-list .chat-card {
+    padding: 1em;
+    border: 1px solid #cfcfcf;
+    cursor: pointer;
 }

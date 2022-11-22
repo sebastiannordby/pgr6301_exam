@@ -44,7 +44,7 @@ export function EditDishDialog({ open, setOpen, dish }) {
 
   return (
     <Dialog onClose={() => setOpen(false)} open={open}>
-      <DialogTitle>New Dish</DialogTitle>
+      <DialogTitle>Edit - {name}</DialogTitle>
       <DialogContent>
         <form onSubmit={onDishSubmit} style={{ width: "350px" }}>
           <div className="form-group">

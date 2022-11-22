@@ -38,7 +38,7 @@ export function DishesAPI(mongoDatabase) {
 
     const { name, price, description, includes, allergens } = req.body;
 
-    const result = mongoDatabase.collection(DISHES_COLLECTION).insertOne({
+    const result = await mongoDatabase.collection(DISHES_COLLECTION).insertOne({
       name,
       price,
       description,
@@ -57,7 +57,7 @@ export function DishesAPI(mongoDatabase) {
 
     const { id, name, price, description, includes, allergens } = req.body;
 
-    mongoDatabase
+    await mongoDatabase
       .collection(DISHES_COLLECTION)
       .updateOne(
         { _id: new ObjectID(id) },
@@ -80,9 +80,9 @@ export function DishesAPI(mongoDatabase) {
       return;
     }
 
-    mongoDatabase
+    const result = await mongoDatabase
       .collection(DISHES_COLLECTION)
-      .deleteMany({ _id: new ObjectID(id) });
+      .deleteOne({ _id: new ObjectID(id) });
 
     res.sendStatus(200);
   });

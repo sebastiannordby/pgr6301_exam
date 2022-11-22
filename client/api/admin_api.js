@@ -13,4 +13,9 @@ export const ADMIN_API = {
 
     return res.ok ? await res.json() : null;
   },
+  getSignedOnAdmin: async () => {
+    const res = await fetch("/api/admin");
+
+    return res.ok ? await res.json() : null;
+  },
 };
