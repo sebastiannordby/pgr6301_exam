@@ -11,33 +11,16 @@ The account was disabled because of insufficient credits(has been used up by oth
 I also had to move my repository, because the Github classroom was not configured correctly(Settings button invisible):
 ![image](https://user-images.githubusercontent.com/24465003/203274089-f98ef49f-d368-424b-bd6e-0089686b8099.png)
 
-This led to alot of frustration and i ended up settleing with a lower grade.
-
-### Task spefific requirements
-*[X] A visitor to the page should be able to see the menu of potential dishes being offered
-*[ ] When the application starts in developer mode, you must have some basic test data,
-  representing a valid menu. If you cannot setup the REST API (requirement for grade D, see
-  requirement R2), then hardcode a menu in the frontend.
-*[X] A customer should be able to create a customer account, but there should be no
-  registration page for admin users (those are for employees, can be assumed to be added via
-  some other mechanism). Your database should include some predefined admin accounts for
-  testing purposes.
-*[X] An admin should be able to log in, add and remove items to the menu, edit existing menu
-    items (for example, update the ingredients of a menu item).
-*[X] The server should have separate API paths for customers getting data and admins
-  adding/removing items from the menu. Checks to ensure that only admins can add/remove
-  items from the menu should be enforced.
-*[ ] A chat system (based on WebSockets) should be provided, where a customer can discuss
-    further details with one of the employees in real time.
-*[X] A customer can create an order specifying a time/place where they want a delivery, and
-  how many portions of each dish they select. This order can be placed if the customer is logged
-  in, and will be stored in a separate database (separate table/collection, not different
-  technology).
+This unfortunately led to alot of frustration and i ended up settling with a lower grade.
 
 #### Predefined Admin Logins
 Username: admin | Password: admin
+Username: indish | Password: pass
 
 #### Predefined Customer Logins
+Username: gluten | Password: glut1
+Username: sensor | Password: pass
+
 
 ### Documentation
 Section marked in green is for the customer.
