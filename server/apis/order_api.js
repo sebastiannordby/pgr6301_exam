@@ -29,16 +29,17 @@ export function OrderAPI(mongoDatabase) {
   router.get("/", async (req, res) => {
     const customerId = req.cookies.customer;
 
-    if (customerId) {
-      const orders = await mongoDatabase
-        .collection(ORDERS_COLLECTION)
-        .find({ customerId: customerId })
-        .toArray();
-
-      res.send(orders);
-    } else {
-      res.sendStatus(403);
+    if (!customerId) {
+      req.sendStatus(403);
+      return;
     }
+
+    const orders = await mongoDatabase
+      .collection(ORDERS_COLLECTION)
+      .find({ customerId: customerId })
+      .toArray();
+
+    res.send(orders);
   });
 
   router.put("/", async (req, res) => {
@@ -46,13 +47,11 @@ export function OrderAPI(mongoDatabase) {
 
     if (!req.body || req.body == Object) {
       res.sendStatus(404);
-
       return;
     }
 
     if (!customerId) {
       res.sendStatus(403);
-
       return;
     }
 

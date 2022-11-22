@@ -10,8 +10,8 @@ import { CustomerLoginDialog } from "./components/customer/customer-login-compon
 import { CustomerRegisterDialog } from "./components/customer/customer-register-component.jsx";
 import { OrderDetailsPage, OrderPage } from "./pages/order.jsx";
 import { CUSTOMER_API } from "./api/customer_api.js";
-import { CustomerContext } from "./state/customer-context.jsx";
 import React from "react";
+import { SupportChat } from "./pages/chat.jsx";
 
 const element = document.getElementById("root");
 const root = createRoot(element);
@@ -27,6 +27,10 @@ function Application() {
           <Route path="/" element={<DishesPage customer={customer} />}></Route>
           <Route path="/admin" element={<AdminPage />}></Route>
           <Route path="/order" element={<OrderPage />}></Route>
+          <Route
+            path="/support"
+            element={<SupportChat customer={customer} />}
+          ></Route>
           <Route path="/order/:orderId" element={<OrderDetailsPage />}></Route>
         </Routes>
       </main>
@@ -79,6 +83,9 @@ function Header({ onCustomerLoggedIn }) {
             </li>
             <li>
               <Link to="/order">Order</Link>
+            </li>
+            <li>
+              <Link to="/support">Support</Link>
             </li>
             {!cookies.admin && (
               <>

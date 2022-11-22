@@ -1,14 +1,7 @@
 import { useCookies } from "react-cookie";
 import { NoAccessComponent } from "../no-access-component";
 import { useEffect, useState } from "react";
-import { ADMIN_API } from "../api/admin_api.js";
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  TextField,
-} from "@mui/material";
+import { Button } from "@mui/material";
 import { DISHES_API } from "../api/dishes_api.js";
 import { NewDishDialog } from "../components/dish/add-dish-component.jsx";
 import { EditDishDialog } from "../components/dish/edit-dish-component.jsx";

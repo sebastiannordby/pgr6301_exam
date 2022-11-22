@@ -1,5 +1,5 @@
 import { WebSocketServer } from "ws";
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectID } from "mongodb";
 import { DishesAPI } from "./apis/dishes_api.js";
 import { CustomerAPI } from "./apis/customer_api.js";
 import { AdminAPI } from "./apis/admin_api.js";
@@ -9,6 +9,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { OrderAPI } from "./apis/order_api.js";
+import { ChatAPI } from "./apis/chat_api.js";
 
 dotenv.config();
 
@@ -27,11 +28,54 @@ MONGO_CLIENT.connect().then(async (res) => {
   APP.use("/api/customer", CustomerAPI(MONGO_DATABASE));
   APP.use("/api/admin", AdminAPI(MONGO_DATABASE));
   APP.use("/api/order", OrderAPI(MONGO_DATABASE));
+  APP.use("/api/chat", ChatAPI(MONGO_DATABASE));
 });
 
 WEB_SOCKET_SERVER.on("connect", (socket) => {
   console.log("Ws connected");
   socket.send("Hello");
+
+  socket.on("message", async (data) => {
+    const packet = JSON.parse(data);
+
+    if (packet) {
+      let chat = await MONGO_DATABASE.collection("chats").findOne({
+        customerId: packet.customerId,
+      });
+
+      if (!chat) {
+        chat = {
+          customerId: packet.customerId,
+          messages: [],
+        };
+      }
+
+      if (!packet.admin) {
+        chat.messages.push({
+          authorId: packet.customerId,
+          authorName: packet.customerName,
+          isAdmin: false,
+          message: packet.message,
+        });
+      } else {
+        chat.messages.push({
+          authorId: packet.adminId,
+          authorName: packet.adminName,
+          isAdmin: true,
+          message: packet.message,
+        });
+      }
+
+      await MONGO_DATABASE.collection("chats").updateOne(
+        { _id: new ObjectID(chat._id) },
+        {
+          $set: {
+            ...chat,
+          },
+        }
+      );
+    }
+  });
 });
 
 APP.use((req, res, next) => {

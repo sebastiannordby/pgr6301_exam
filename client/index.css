@@ -242,3 +242,20 @@ main {
     flex-direction: column;
     gap: 1em;
 }
+
+/*Support chat*/
+.support-chat {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.support-chat .messages {
+    flex: 1;
+}
+
+.support-chat form {
+    display: flex;
+    gap: .5em;
+}

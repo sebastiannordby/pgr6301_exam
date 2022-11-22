@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { DISHES_API } from "../api/dishes_api.js";
-import { CustomerContext } from "../state/customer-context.jsx";
 
 export function DishesPage({ customer }) {
   const [dishes, setDishes] = useState([]);
