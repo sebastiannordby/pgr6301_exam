@@ -47,5 +47,9 @@
       "!server.js",
       "!coverage/**"
     ]
-  }
+  },
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ]
 }
