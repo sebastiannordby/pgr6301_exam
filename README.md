@@ -13,21 +13,6 @@ I also had to move my repository, because the Github classroom was not configure
 
 This led to alot of frustration and i ended up settleing with a lower grade.
 
-### Task at hand
-You are to make a website and support server for a catering business. The idea is that the
-business organises and prepares food for events.
-
-They have a catalogue of possible dishes (that is accessible online by potential customers) that
-show all the dishes that they can provide, along with any relevant information (for example,
-information relating to allergies, suitability for vegetarian/vegan diets, and ingredients).
-
-A (potential) customer can access the website, show all available dishes, sort/filter them by
-their preference, and place an order for some combination of dishes, for a specified
-date/place. A customer can only place an order after making an account.
-
-An admin (or some employee of the company) can add or remove dishes (but, obviously, only
-while successfully logged in).
-
 ### Task spefific requirements
 *[X] A visitor to the page should be able to see the menu of potential dishes being offered
 *[ ] When the application starts in developer mode, you must have some basic test data,
@@ -49,56 +34,52 @@ while successfully logged in).
   in, and will be stored in a separate database (separate table/collection, not different
   technology).
 
-
-### Checklist of technologies you should include in your application
-* [X] Some form of Login and access control
-* [ ] Jest tests
-* [ ] Snapshot tests
-* [ ] Simulate + jest.fn
-* [ ] Supertest
-* [ ] Github Actions with coverage report
-* [ ] Deployment to cloud (in this case, Azure)
-* [X] Mongodb
-* [X] Navigating in the application using React Router (remember Express Middleware)
-* [ ] Reading data from the server (remember error handling)
-* [X] Writing data to the server
-* [ ] Websockets
-
-### General Requirements
-
-*[X] Write a homepage with React
-*[X] Have at least 2 other React pages that can be accessed via React-Router
-*[X] At least one page should have some "state", with a change that should be triggered from
-  the interface.
-*[X] From each page, be able to navigate back (either to previous page or to homepage)
-  without using the browser "Back" button.
-*[ ] Create a RESTful API that handles at least one GET, one POST, one PUT, and one
-  DELETE calls and uses JSON for data transfer.
-*[X] The frontend must use that RESTful API (for example, using fetch).
-*[ ] All endpoints must be listed in README.md
-*[ ] The solution should use continuous integration (in this case GitHub actions). Your code
-  should be uploaded onto a github repository, and on every push to the master branch, the CI
-  script should run the tests associated with your project.
-*[ ] Handle authentication/authorization, session-based via cookies
-*[X] Frontend should have a login page (Register will depend on the topic)
-*[ ] A logged-in user should get a personalized welcome message
-*[X] On every page, there should be an option to logout
-*[ ] Each REST endpoint MUST handle authentication (401), and possibly authorization
-  (403) checks. If an endpoint is supposed to be “open” to everyone, explicitly add a codecomment for it in its Express handler.
-*[ ] Create a test class called security-test.js, where each endpoint is tested for when it returns
-  401 and 403 (if applicable, i.e., if they can return such codes).
-*[ ] In the “readme.md” file, where you list the endpoints (recall R2), for each endpoint list
-  the security tests written for it.
-*[ ] Your solution should include continuous deployment to Azure.
-*[ ] In the eventuality of you finishing all of the above requirements, and only then, if you
-  have extra time left you should add new functionalities/features to your project.
-  Those extra functionalities need to be briefly discussed/listed in the “readme.md” file
-  (e.g., as bullet points). Note: in the marking, examiners will ignore new functionalities that
-  are not listed in the readme document. What type of functionalities to add is completely up to
-  you.
-
 #### Predefined Admin Logins
 Username: admin | Password: admin
 
 #### Predefined Customer Logins
+
+### Documentation
+Section marked in green is for the customer.
+Section marked in red is for the administrator.
+
+![image](https://user-images.githubusercontent.com/24465003/203337828-24114dc1-9c3a-46d5-a18f-54a782202896.png)
+
+### Customer
+
+Login - Customer
+- Cookie with the customer's id is set on the client. There is no encryption/not safe for production.
+![image](https://user-images.githubusercontent.com/24465003/203337949-d2be04da-b75f-4543-acdf-11bc5851af9b.png)
+
+Welcome message - Customer
+![image](https://user-images.githubusercontent.com/24465003/203338062-ece73811-04d0-493e-a5b6-ccdb3e4b20d0.png)
+
+Support chat - Customer
+- Messages saves to the database for later reference.
+![image](https://user-images.githubusercontent.com/24465003/203338181-16675558-b8d7-455b-aa31-d45946fa7c57.png)
+
+Order - Customer
+- To create an order fill in the fields in the dialog
+- When order is created click on the order to see details
+- In the orderdetails page you can add dishes, change address and save
+- To add a click on the dish, enter a quantity then click add
+- Rememeber to click save to keep your changes.
+- Signout.
+
+![image](https://user-images.githubusercontent.com/24465003/203338456-e645b719-20c5-4648-a041-e22c336511da.png)
+
+![image](https://user-images.githubusercontent.com/24465003/203338584-66325c95-9ea2-432f-b30a-8779839756bc.png)
+
+![image](https://user-images.githubusercontent.com/24465003/203338663-4ce1b84c-7b60-4f93-8869-00a1868e412d.png)
+
+![image](https://user-images.githubusercontent.com/24465003/203338879-47b9eb98-d6bb-4ca1-9062-96d19d674236.png)
+
+![image](https://user-images.githubusercontent.com/24465003/203338968-b521a439-d292-4ca4-b4c8-a87813eb71b9.png)
+
+![image](https://user-images.githubusercontent.com/24465003/203339164-e6d2ea00-1dd8-45a2-bad8-5fdf9d9c5796.png)
+
+![image](https://user-images.githubusercontent.com/24465003/203339637-b2e50080-41e9-46b2-a5c7-706a1579192b.png)
+
+### Admin
+
 
