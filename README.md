@@ -81,5 +81,25 @@ Order - Customer
 ![image](https://user-images.githubusercontent.com/24465003/203339637-b2e50080-41e9-46b2-a5c7-706a1579192b.png)
 
 ### Admin
+- Login as admin, username: admin, password: admin
+- Click on management to manage dishes
+- Click the "X" in the corner of the dish to delete it
+- Click on the dish to edit it.
+- Click on support to answer support calls.
+- 
+![image](https://user-images.githubusercontent.com/24465003/203339878-871f518c-f400-4dcd-8eb8-ca25a11042bb.png)
 
+![image](https://user-images.githubusercontent.com/24465003/203340036-bcda0824-c198-4f72-85f2-4f5b3353ba87.png)
+
+![image](https://user-images.githubusercontent.com/24465003/203340261-ae58e2de-8c9f-4f40-8e1b-d950d7dfb6d5.png)
+
+![image](https://user-images.githubusercontent.com/24465003/203340292-01afcae8-1439-4131-8324-6a33245e824d.png)
+
+![image](https://user-images.githubusercontent.com/24465003/203340423-d9f4a9bb-6722-4daf-b56f-f1ffd9cc4371.png)
+
+![image](https://user-images.githubusercontent.com/24465003/203340510-dc450504-f4c0-4f79-b107-8e612677d9d8.png)
+
+![image](https://user-images.githubusercontent.com/24465003/203340652-5b4303c7-0860-4c1b-bb89-cbb181815c48.png)
+
+![image](https://user-images.githubusercontent.com/24465003/203340722-1501e26f-e962-4604-9050-ccc095f03319.png)
 
