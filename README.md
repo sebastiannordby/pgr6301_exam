@@ -3,7 +3,14 @@
 ## Exam in PG6301 Webutvikling og API-design
 ### Kandidatnr: 1009
 
-## Important - Azure and Repo
+Documentation and logins can be found below.
+
+### Test Coverage Express
+- All endpoints are tested
+- Socket is not tested
+- ![image](https://user-images.githubusercontent.com/24465003/203352704-38b09525-e530-41f0-83cb-192f3c26a9a3.png)
+
+## IMPORTANT - Azure and Repo 
 This app could not be published to Azure since my account has been disabled.
 The account was disabled because of insufficient credits(has been used up by other courses at Kristiania). Proof:
 ![image](https://user-images.githubusercontent.com/24465003/203160263-984c532d-59b4-4276-ab56-f67ec4cd3234.png)
@@ -25,10 +32,6 @@ Username: gluten | Password: glut1
 
 Username: sensor | Password: pass
 
-### Test Coverage Express
-- All endpoints are tested
-- Socket is not tested
-- ![image](https://user-images.githubusercontent.com/24465003/203352704-38b09525-e530-41f0-83cb-192f3c26a9a3.png)
 
 
 ### Documentation
