@@ -13,7 +13,7 @@
     "dev:server": "cd server && npm run dev",
     "start": "cd server && npm run start",
     "test": "npm run test:client && npm run test:server",
-    "test:client": "cd client && npm run test",
+    "test:client": "echo 'Not configured: cd client && npm run test'",
     "test:server": "cd server && npm run test"
   },
   "repository": {
@@ -30,6 +30,14 @@
     "concurrently": "^7.5.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "concurrently": "^7.1.0",
+    "jest": "^28.0.3",
+    "jest-babel": "^1.0.1",
+    "jest-environment-jsdom": "^28.0.2",
+    "node-fetch": "^3.3.0",
+    "parcel": "^2.5.0",
     "prettier": "^2.7.1"
   }
 }
