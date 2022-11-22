@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "parcel watch index.html",
     "build": "npm ci --include=dev && parcel build index.html",
-    "test": "jest"
+    "test": "jest --collectCoverage",
+    "test:coverage": "jest --collectCoverage"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +21,8 @@
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.3"
+    "react-router-dom": "^6.4.3",
+    "node-fetch": "^3.2.4"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
