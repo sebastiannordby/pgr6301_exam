@@ -8,6 +8,11 @@ This app could not be published to Azure since my account has been disabled.
 The account was disabled because of insufficient credits(has been used up by other courses at Kristiania). Proof:
 ![image](https://user-images.githubusercontent.com/24465003/203160263-984c532d-59b4-4276-ab56-f67ec4cd3234.png)
 
+I also had to move my repository, because the Github classroom was not configured correctly(Settings button invisible):
+![image](https://user-images.githubusercontent.com/24465003/203274089-f98ef49f-d368-424b-bd6e-0089686b8099.png)
+
+This led to alot of frustration and i ended up settleing with a lower grade.
+
 ### Task at hand
 You are to make a website and support server for a catering business. The idea is that the
 business organises and prepares food for events.
@@ -39,7 +44,7 @@ while successfully logged in).
   items from the menu should be enforced.
 *[ ] A chat system (based on WebSockets) should be provided, where a customer can discuss
     further details with one of the employees in real time.
-*[ ] A customer can create an order specifying a time/place where they want a delivery, and
+*[X] A customer can create an order specifying a time/place where they want a delivery, and
   how many portions of each dish they select. This order can be placed if the customer is logged
   in, and will be stored in a separate database (separate table/collection, not different
   technology).
