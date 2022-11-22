@@ -8,15 +8,17 @@ export function ChatAPI(mongoDatabase) {
   router.get("/", async (req, res) => {
     const customerId = req.cookies.customer;
 
-    if (customerId) {
-      const chat = await mongoDatabase
-        .collection(CHATS_COLLECTION)
-        .findOne({ customerId: customerId });
-
-      res.send(chat);
-    } else {
+    if (!customerId) {
       res.sendStatus(403);
+
+      return;
     }
+
+    const chat = await mongoDatabase
+      .collection(CHATS_COLLECTION)
+      .findOne({ customerId: customerId });
+
+    res.send(chat);
   });
 
   return router;

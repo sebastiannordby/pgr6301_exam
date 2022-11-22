@@ -21,7 +21,7 @@ afterAll(() => {
 describe("OrderAPI", () => {
   it("Retrieve Orders BySigned On Customer", async () => {
     await request(app).get("/api/order").expect(403);
-  }, 5000);
+  });
 
   it("Update Order", async () => {
     await request(app).put("/api/order").send({}).expect(403);

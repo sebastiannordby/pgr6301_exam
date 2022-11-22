@@ -30,7 +30,7 @@ export function OrderAPI(mongoDatabase) {
     const customerId = req.cookies.customer;
 
     if (!customerId) {
-      req.sendStatus(403);
+      res.sendStatus(403);
       return;
     }
 
