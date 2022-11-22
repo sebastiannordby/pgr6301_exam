@@ -3,6 +3,8 @@
 ## Exam in PG6301 Webutvikling og API-design
 ### Kandidatnr: 1009
 
+Link to repository: https://github.com/sebastiannordby/pgr6301_exam
+
 ### Test Coverage Express
 - All endpoints are tested
 - Socket is not tested
