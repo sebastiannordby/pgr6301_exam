@@ -3,24 +3,12 @@
 ## Exam in PG6301 Webutvikling og API-design
 ### Kandidatnr: 1009
 
-Documentation and logins can be found below.
-
 ### Test Coverage Express
 - All endpoints are tested
 - Socket is not tested
 - ![image](https://user-images.githubusercontent.com/24465003/203352704-38b09525-e530-41f0-83cb-192f3c26a9a3.png)
 
-## IMPORTANT - Azure and Repo 
-This app could not be published to Azure since my account has been disabled.
-The account was disabled because of insufficient credits(has been used up by other courses at Kristiania). Proof:
-![image](https://user-images.githubusercontent.com/24465003/203160263-984c532d-59b4-4276-ab56-f67ec4cd3234.png)
-
-I also had to migrate my repository, because the Github classroom was not configured correctly(Settings button invisible):
-![image](https://user-images.githubusercontent.com/24465003/203274089-f98ef49f-d368-424b-bd6e-0089686b8099.png)
-
-This unfortunately led to alot of frustration and i ended up settling with a lower grade.
-
-## What has been done
+### What has been done
 *[X] Some form of Login and access control
 * [X] Jest tests
  * [ ] Snapshot tests
@@ -39,6 +27,17 @@ This unfortunately led to alot of frustration and i ended up settling with a low
 * [X] Create, edit and remove dishes
 * [X] Support chat with sockes: both admin and customer
 * [X] Customer can order dishes to an address with delivery time
+
+### IMPORTANT - Azure and Repo 
+This app could not be published to Azure since my account has been disabled.
+The account was disabled because of insufficient credits(has been used up by other courses at Kristiania). Proof:
+![image](https://user-images.githubusercontent.com/24465003/203160263-984c532d-59b4-4276-ab56-f67ec4cd3234.png)
+
+I also had to migrate my repository, because the Github classroom was not configured correctly(Settings button invisible):
+![image](https://user-images.githubusercontent.com/24465003/203274089-f98ef49f-d368-424b-bd6e-0089686b8099.png)
+
+This unfortunately led to alot of frustration and i ended up settling with a lower grade.
+
 
 
 #### Predefined Admin Logins
