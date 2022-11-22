@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
-import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { DishesPage } from "./pages/dishes";
 import "./index.css";
 import { useCookies } from "react-cookie";
@@ -9,61 +9,76 @@ import { AdminLoginDialog } from "./components/admin-login.jsx";
 import { CustomerLoginDialog } from "./components/customer/customer-login-component.jsx";
 import { CustomerRegisterDialog } from "./components/customer/customer-register-component.jsx";
 import { OrderDetailsPage, OrderPage } from "./pages/order.jsx";
+import { CUSTOMER_API } from "./api/customer_api.js";
+import { CustomerContext } from "./state/customer-context.jsx";
+import React from "react";
 
 const element = document.getElementById("root");
 const root = createRoot(element);
 
 function Application() {
+  const [customer, setCustomer] = useState();
+
   return (
-    <>
-      <Header />
+    <BrowserRouter>
+      <Header onCustomerLoggedIn={setCustomer} />
       <main>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<DishesPage />}></Route>
-            <Route path="/admin" element={<AdminPage />}></Route>
-            <Route path="/order" element={<OrderPage />}></Route>
-            <Route
-              path="/order/:orderId"
-              element={<OrderDetailsPage />}
-            ></Route>
-          </Routes>
-        </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<DishesPage customer={customer} />}></Route>
+          <Route path="/admin" element={<AdminPage />}></Route>
+          <Route path="/order" element={<OrderPage />}></Route>
+          <Route path="/order/:orderId" element={<OrderDetailsPage />}></Route>
+        </Routes>
       </main>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 
-function Header() {
+function Header({ onCustomerLoggedIn }) {
   const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
   const [customerLoginDialogVisible, setCustomerLoginDialogVisible] =
     useState(false);
   const [customerRegisterDialogVisible, setCustomerRegisterDialogVisible] =
     useState(false);
+  const [customer, setCustomer] = useState({
+    name: "Sign in to see customer name",
+  });
 
-  console.log("CookieS: ", cookies);
-
-  const setCustomerCookie = (cookieValue) => {
-    setCookie("customer", cookieValue);
+  const setSignedInCustomer = (result) => {
+    setCookie("customer", result.cookie);
+    setCustomer(result.customer);
+    onCustomerLoggedIn(result.customer);
   };
 
   const signoutCustomer = () => {
     removeCookie("customer");
+    setCustomer(null);
   };
+
+  useEffect(() => {
+    (async () => {
+      if (cookies["customer"]) {
+        const customer = await CUSTOMER_API.getSignedOnCustomer();
+        setCustomer(customer);
+        onCustomerLoggedIn(customer);
+      }
+    })();
+  }, [cookies]);
+
+  console.log(customer);
 
   return (
     <>
       <header>
         <h1>Indish Resturantos</h1>
-
         <nav>
           <ul>
             <li>
-              <a href="/">Dishes</a>
+              <Link to="/">Dishes</Link>
             </li>
             <li>
-              <a href="/order">Order</a>
+              <Link to="/order">Order</Link>
             </li>
             {!cookies.admin && (
               <>
@@ -89,7 +104,7 @@ function Header() {
       <CustomerLoginDialog
         open={customerLoginDialogVisible}
         setOpen={setCustomerLoginDialogVisible}
-        setCustomerCookie={setCustomerCookie}
+        setSignedInCustomer={setSignedInCustomer}
       />
 
       <CustomerRegisterDialog
@@ -117,7 +132,7 @@ function Footer() {
               <a onClick={() => setAdminDialogVisible(true)}>Login(Admin)</a>
             </li>
             <li>
-              <a href="/admin">Management</a>
+              <Link to="/admin">Management</Link>
             </li>
             <li>
               <a onClick={signOutAdmin}>Signout(Admin)</a>

@@ -8,18 +8,21 @@ import {
 import { useState } from "react";
 import { CUSTOMER_API } from "../../api/customer_api.js";
 
-export function CustomerLoginDialog({ open, setOpen, setCustomerCookie }) {
+export function CustomerLoginDialog({ open, setOpen, setSignedInCustomer }) {
   return (
     <Dialog open={open} onClose={() => setOpen(false)}>
       <DialogTitle>Login - Customer</DialogTitle>
       <DialogContent>
-        <CustomerLoginForm setCustomerCookie={setCustomerCookie} />
+        <CustomerLoginForm
+          onLoginSuccess={() => setOpen(false)}
+          setSignedInCustomer={setSignedInCustomer}
+        />
       </DialogContent>
     </Dialog>
   );
 }
 
-export function CustomerLoginForm({ setCustomerCookie }) {
+export function CustomerLoginForm({ setSignedInCustomer, onLoginSuccess }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,10 +31,9 @@ export function CustomerLoginForm({ setCustomerCookie }) {
 
     const result = await CUSTOMER_API.login(username, password);
 
-    console.log("Result: ", result);
-
     if (result) {
-      setCustomerCookie(result.cookie);
+      setSignedInCustomer(result);
+      onLoginSuccess();
     }
   };
 

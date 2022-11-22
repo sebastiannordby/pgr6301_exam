@@ -36,21 +36,21 @@ export function DishesAPI(mongoDatabase) {
       return;
     }
 
-      const { name, price, description, includes, allergens } = req.body;
+    const { name, price, description, includes, allergens } = req.body;
 
-      const result = mongoDatabase.collection(DISHES_COLLECTION).insertOne({
-        name,
-        price,
-        description,
-        includes,
-        allergens,
-      });
+    const result = mongoDatabase.collection(DISHES_COLLECTION).insertOne({
+      name,
+      price,
+      description,
+      includes,
+      allergens,
+    });
 
-      res.sendStatus(200);
+    res.sendStatus(200);
   });
 
   router.put("/", async (req, res) => {
-    if(!req.cookies.admin) {
+    if (!req.cookies.admin) {
       res.sendStatus(403);
       return;
     }
@@ -58,11 +58,11 @@ export function DishesAPI(mongoDatabase) {
     const { id, name, price, description, includes, allergens } = req.body;
 
     mongoDatabase
-        .collection(DISHES_COLLECTION)
-        .updateOne(
-            { _id: new ObjectID(id) },
-            { $set: { name, price, description, includes, allergens } }
-        );
+      .collection(DISHES_COLLECTION)
+      .updateOne(
+        { _id: new ObjectID(id) },
+        { $set: { name, price, description, includes, allergens } }
+      );
 
     res.sendStatus(200);
   });
@@ -70,19 +70,19 @@ export function DishesAPI(mongoDatabase) {
   router.delete("/", async (req, res) => {
     const { id } = req.body;
 
-    if(!id) {
+    if (!id) {
       res.sendStatus(404);
       return;
     }
 
-    if(!req.cookies.admin) {
+    if (!req.cookies.admin) {
       res.sendStatus(403);
       return;
     }
 
     mongoDatabase
-        .collection(DISHES_COLLECTION)
-        .deleteMany({ _id: new ObjectID(id) });
+      .collection(DISHES_COLLECTION)
+      .deleteMany({ _id: new ObjectID(id) });
 
     res.sendStatus(200);
   });

@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { ObjectID } from "mongodb";
 
 const CUSTOMERS_COLLECTION = "customers";
 
@@ -6,8 +7,6 @@ export function CustomerAPI(mongoDatabase) {
   const router = new Router();
 
   router.post("/login", async (req, res) => {
-    console.log("Hmmm: ");
-
     const { username, password } = req.body;
     const customers = await mongoDatabase
       .collection(CUSTOMERS_COLLECTION)
@@ -19,10 +18,29 @@ export function CustomerAPI(mongoDatabase) {
 
       res.json({
         cookie: customer._id.toString(),
+        customer: customer,
       });
     } else {
       res.sendStatus(404);
     }
+  });
+
+  router.get("/signed-on", async (req, res) => {
+    if (!req.cookies.customer || req.cookies.customer.length == 0) {
+      res.sendStatus(403);
+      return;
+    }
+
+    const customer = await mongoDatabase
+      .collection(CUSTOMERS_COLLECTION)
+      .findOne({ _id: new ObjectID(req.cookies.customer) });
+
+    if (!customer) {
+      res.sendStatus(404);
+      return;
+    }
+
+    res.send(customer);
   });
 
   router.post("/register", async (req, res) => {

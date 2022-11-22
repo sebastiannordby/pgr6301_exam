@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DISHES_API } from "../api/dishes_api.js";
+import { CustomerContext } from "../state/customer-context.jsx";
 
-export function DishesPage() {
+export function DishesPage({ customer }) {
   const [dishes, setDishes] = useState([]);
 
   useEffect(() => {
@@ -12,6 +13,8 @@ export function DishesPage() {
 
   return (
     <div className={"dishes-page page"}>
+      {customer && <h2>Welcome {customer.name}!</h2>}
+
       <h2>Dishes</h2>
 
       <div className={"items"}>
