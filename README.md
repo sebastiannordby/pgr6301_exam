@@ -54,6 +54,10 @@ Username: sensor | Password: pass
 
 
 
+### Database
+![image](https://user-images.githubusercontent.com/24465003/203358566-3ab8fdee-8a16-4d66-bc27-e778ebf81773.png)
+
+
 ### Documentation
 Section marked in green is for the customer.
 Section marked in red is for the administrator.
