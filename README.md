@@ -25,6 +25,11 @@ Username: gluten | Password: glut1
 
 Username: sensor | Password: pass
 
+### Test Coverage Express
+- All endpoints are tested
+- Socket is not tested
+- ![image](https://user-images.githubusercontent.com/24465003/203352704-38b09525-e530-41f0-83cb-192f3c26a9a3.png)
+
 
 ### Documentation
 Section marked in green is for the customer.
