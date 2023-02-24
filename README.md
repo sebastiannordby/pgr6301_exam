@@ -2,6 +2,7 @@
 
 ## Exam in PG6301 Webutvikling og API-design
 ### Kandidatnr: 1009
+Grade: B
 
 Link to repository: https://github.com/sebastiannordby/pgr6301_exam
 
